@@ -4,7 +4,10 @@ import {FcGoogle} from "react-icons/fc";
 import {AiOutlineGithub} from "react-icons/ai";
 import BackImage from "../../assets/Background.png";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../services/contextAPI";
 
+//Logo irei implementar a autenticação com Github por aqui.
 
 export default function Login(){
   return(
