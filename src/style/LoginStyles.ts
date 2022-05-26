@@ -24,7 +24,7 @@ export const Container = styled.section`
   h1{
     font-size: 48px;
   }
-  .singIn{
+  .login{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,16 +42,19 @@ export const Container = styled.section`
         width: 100px;
       }
     }
-    .form{
+    .actions{
       display: flex;
       align-items: center;
-      width: 80%;
+      justify-content: center;
+      width: 70%;
+      margin: 0 auto;
       margin-top: 30px;
       button{
         display: flex;
         width: 50%;
         height: 50px;
         cursor: pointer;
+        margin: 0 auto;
         margin: 20px;
         svg{
           margin-right: 10px;

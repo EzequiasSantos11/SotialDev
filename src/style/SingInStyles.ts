@@ -38,7 +38,7 @@ export const Container = styled.section`
       justify-content: center;
       align-items: center;
       width: 80%;
-      gap: 20px;
+      margin: 0 auto;
       margin-top: 36px;
       margin-bottom: 20px;
       button{

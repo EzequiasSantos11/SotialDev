@@ -12,7 +12,7 @@ type UserProviderTypes = {
   NewMessage: MessagesTypes[];
   active: boolean,
   user: UserProps | null,
-  loginGoogle: ()=>Promise<void>,
+  loginGoogle: ()=>void,
   signOutAllAccounts: ()=>void,
 }
 
@@ -79,26 +79,27 @@ export function UserProvider({children}: any){
   //   }
   // }
   //Login com Google Account.
-  async function loginGoogle(){
+  function loginGoogle(){
     if(user){
       history("/home");
     }else{
-      const result = await signInWithPopup(auth, googleProvider);
-      if(result.user){
-        const { displayName, photoURL, uid} = result.user;
-        if(!displayName || !photoURL){
-          throw new Error("Missing information from Github Account.");
+      signInWithPopup(auth, googleProvider).then(result=>{
+        if(result.user){
+          const { displayName, photoURL, uid} = result.user;
+          if(!displayName || !photoURL){
+            throw new Error("Missing information from Github Account.");
+          }
+          localStorage.setItem("user", `[name: ${displayName}, avatar: ${photoURL}], id: ${uid}`)
+          setUser({
+            id: uid,
+            name: displayName,
+            avatar: photoURL
+          })
+          history("/home");
         }
-        localStorage.setItem("user", `[name: ${displayName}, avatar: ${photoURL}], id: ${uid}`)
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL
-        })
-        history("/home");
-      }
-    }
-  }
+      });
+    };
+  };
   //Deslogar (signOut).
   function signOutAllAccounts(){
     signOut(auth).then(() => {

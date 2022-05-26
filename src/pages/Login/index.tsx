@@ -1,9 +1,8 @@
 import { Button } from "../../components/Button";
 import { Container } from "../../style/LoginStyles";
 import { FcGoogle } from "react-icons/fc";
-import { AiOutlineGithub } from "react-icons/ai";
 import BackImage from "../../assets/Background.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Moon from "../../assets/moon.png";
 //Importações firebase (separar em outro arquivo mais tarde).
 import { useContext } from "react";
@@ -18,13 +17,13 @@ export default function Login() {
       <div className="background">
         <img src={BackImage} alt="" />
       </div>
-      <div className="singIn">
+      <div className="login">
         <div className="logo">
           <img src={Moon} alt="" />
           <h1>Moon</h1>
         </div>
           <strong>Entre em sua conta para conversar!</strong>
-        <div className="form">
+        <div className="actions">
           {/* <Button action={loginGithub}>
             <AiOutlineGithub />
             Login with a github
