@@ -1,7 +1,5 @@
-import {AiOutlineSearch, AiFillHome} from "react-icons/ai";
+import { AiFillHome} from "react-icons/ai";
 import {MdOutlineMessage} from "react-icons/md";
-import {TiArrowSortedDown} from "react-icons/ti";
-import UserImage from "../../assets/user-photo.png";
 import Logo from "../../assets/mini-logo.png";
 import { Container } from "./styles";
 import { useState } from "react";
@@ -11,7 +9,7 @@ import {UserContext} from "../../services/contextAPI";
 
 export function Header(){
   const [openOptions, setOpenOptions] =  useState(false);
-  const {user} = useContext(UserContext);
+  const {user, signOutAllAccounts} = useContext(UserContext);
   return(
     <Container>
       <img src={Logo} alt="" />
@@ -43,9 +41,7 @@ export function Header(){
           <Link to={"/configurations"}>
             <a>Configurations</a>
           </Link>
-          <Link to={"/"}>
-            <a>Logout</a>
-          </Link>
+          <a onClick={signOutAllAccounts}>Logout</a>
         </div>
       </div>
     </Container>

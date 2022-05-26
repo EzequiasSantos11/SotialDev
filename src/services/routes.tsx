@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import EmailConfirm from "../pages/EmailConfirm";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -7,7 +6,6 @@ import Messages from "../pages/Messages";
 import Notfound from "../pages/Notfound";
 import SingIn from "../pages/SingIn";
 import UserConfig from "../pages/UserConfig";
-import { UserContext } from "./contextAPI";
 
 
 function RequireAuth({ children }: { children: JSX.Element }) {

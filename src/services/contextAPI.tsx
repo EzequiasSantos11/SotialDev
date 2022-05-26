@@ -1,4 +1,4 @@
-import { auth, githubProvider, googleProvider, signInWithPopup } from "./firebaseconfig";
+import { auth, githubProvider, googleProvider, signInWithPopup, signOut } from "./firebaseconfig";
 import { createContext, useState, useEffect } from "react";
 import UserPhoto from "../assets/user-photo.png";
 import Image from "../assets/messageImage.png";
@@ -11,9 +11,10 @@ import man from "../assets/man.png";
 type UserProviderTypes = {
   NewMessage: MessagesTypes[];
   active: boolean,
-  user: UserProps | undefined,
+  user: UserProps | null,
   loginGithub: ()=>Promise<void>,
   loginGoogle: ()=>Promise<void>,
+  signOutAllAccounts: ()=>void,
 }
 
 type UserProps ={
@@ -25,7 +26,7 @@ type UserProps ={
 export const UserContext = createContext<UserProviderTypes>({} as UserProviderTypes);
 
 export function UserProvider({children}: any){
-  const [user, setUser] = useState<UserProps>();
+  const [user, setUser] = useState<UserProps | null>(null);
   const history = useNavigate();
 
   const NewMessage: MessagesTypes[] = [
@@ -45,14 +46,18 @@ export function UserProvider({children}: any){
         if(!displayName || !photoURL){
           throw new Error("Missing information from Github Account.");
         }
+        localStorage.setItem("user", `[name: ${displayName}, avatar: ${photoURL}, id: ${uid}]`);
         setUser({
           id: uid,
           name: displayName,
           avatar: photoURL
         })
+      }else{
+        localStorage.removeItem("user");
+        setUser(undefined)
       }
     })
-  },[])
+  },[]);
   //Função de autenticação do usuário com o github.
   async function loginGithub(){
     if(user){
@@ -60,7 +65,7 @@ export function UserProvider({children}: any){
     }else{
       const result = await signInWithPopup(auth, githubProvider);
       if(result.user){
-        const { displayName, photoURL, uid} = result.user;
+        const { displayName, photoURL, uid } = result.user;
         if(!displayName || !photoURL){
           throw new Error("Missing information from Github Account.");
         }
@@ -95,9 +100,23 @@ export function UserProvider({children}: any){
       }
     }
   }
+  //Deslogar (signOut).
+  function signOutAllAccounts(){
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log("você saiu com sucesso!");
+      localStorage.removeItem("user");
+      history("/");
+      console.log(localStorage.getItem("user"));
+    }).catch((error) => {
+      // An error happened.
+      alert("Ops, você não está conseguindo deslogar! Se esse erro persistir contate o desenvolvedor Ezequias Santos.");
+      console.log(error);
+    });
+  }
 
   return(
-    <UserContext.Provider value={{user, NewMessage, active, loginGithub, loginGoogle}}>
+    <UserContext.Provider value={{user, NewMessage, active, loginGithub, loginGoogle, signOutAllAccounts}}>
       {children}
     </UserContext.Provider>
   )

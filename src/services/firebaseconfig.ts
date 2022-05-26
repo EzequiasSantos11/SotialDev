@@ -1,5 +1,5 @@
 import * as firebase from 'firebase/app';
-import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -22,5 +22,6 @@ export {
   auth,
   githubProvider,
   googleProvider,
-  signInWithPopup
+  signInWithPopup,
+  signOut
 };
