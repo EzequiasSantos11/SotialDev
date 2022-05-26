@@ -5,9 +5,9 @@ export const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 55px;
+  height: 70px;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 50px;
   margin-bottom: 20px;
   background: var(--background-secondary);
   .search{
@@ -56,24 +56,27 @@ export const Container = styled.header`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
     cursor: pointer;
     position: relative;
-    img{
-      height: 30px;
-      width: 30px;
+    .user{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba( 0, 0, 0, 0.4);
+      height: 60px;
+      width: 60px;
+      border-radius: 10px;
+      border: 4px solid #F5F5F5;
+      border-radius: 50%;
+      img{
+        height: 90%;
+        border-radius: 50%;
+      }
+      p{
+        font-size: 12px;
+      }
     }
-    svg{
-      fill: #F4F4F4;
-      position: absolute;
-      right: -6px;
-      bottom: 5px;
-      height: 20px;
-      width: 20px;
-    }
-    p{
-      font-size: 12px;
-    }
+   
     .optionsUser{
       display: none;
       flex-direction: column;
@@ -88,6 +91,7 @@ export const Container = styled.header`
       opacity: 0;
       transition: all .5s;
       position: absolute;
+      z-index: 99999;
       a{
         color: #000;
         font-size: 14px;
@@ -108,6 +112,7 @@ export const Container = styled.header`
       opacity: 1;
       transition: all .5s;
       position: absolute;
+      z-index: 9999;
       a{
         color: #000;
         font-size: 14px;

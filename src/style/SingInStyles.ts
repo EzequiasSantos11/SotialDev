@@ -38,24 +38,16 @@ export const Container = styled.section`
       justify-content: center;
       align-items: center;
       width: 80%;
-      gap: 10px;
+      gap: 20px;
       margin-top: 36px;
       margin-bottom: 20px;
-      .link{
+      button{
         display: flex;
         width: 100%;
-        a{
-          display: flex;
-          width: 100%;
-          height: 30px;
-          cursor: pointer;
-          button{
-            svg{
-              margin-right: 10px;
-              height: 14px;
-              width: 14px;
-            }
-          }
+        height: 50px;
+        font-size: 16px;
+        svg{
+          margin-right: 5px;
         }
       }
     }
@@ -102,9 +94,10 @@ export const Container = styled.section`
           width: 100%;
         }
       }
-      a{
+      button{
         width: 80%;
-        height: 30px;
+        height: 40px;
+        margin: 10px auto;
         font-size: 16px;
       }
       p{

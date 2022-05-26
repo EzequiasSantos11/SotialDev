@@ -30,78 +30,63 @@ export const Container = styled.section`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 38%;
+    width: 50%;
     background: rgba(18, 31, 38, 0.9);
     right: 0;
     position: absolute;
-    .sotialLogin{
+    .logo{
       display: flex;
-      justify-content: center;
+      align-items: flex-end;
+      img{
+        height: 100px;
+        width: 100px;
+      }
+    }
+    .form{
+      display: flex;
       align-items: center;
       width: 80%;
-      gap: 10px;
-      margin-bottom: 10px;
-      .link{
+      margin-top: 30px;
+      button{
         display: flex;
-        width: 100%;
-        a{
-          display: flex;
-          width: 100%;
-          height: 30px;
-          cursor: pointer;
-          button{
-            svg{
-              margin-right: 10px;
-              height: 14px;
-              width: 14px;
-            }
-          }
+        width: 50%;
+        height: 50px;
+        cursor: pointer;
+        margin: 20px;
+        svg{
+          margin-right: 10px;
+          height: 14px;
+          width: 14px;
         }
       }
     }
-    form{
+    .separator{
       display: flex;
-      flex-direction: column;
       align-items: center;
-      width: 100%;
-      .input{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 80%;
-        margin: 5px auto;
-        position: relative;
-        height: 54px;
-        input{
-          width: 100%;
-          border: none;
-          font-size: 18px;
-          border-bottom: 1px solid #F4F4F4;
-        }
-        .cabecalho{
-          display: flex;
-          justify-content: space-between;
-          label{
-            font-size: 16px;
-          }
-          span{
-            font-size: 14px;
-            color: #B0B0B0;
-          }
-        }
+      justify-content: center;
+      width: 90%;
+      position: relative;
+      margin: 0 auto;
+      &::after{
+        content: "";
+        background: white;
+        width: 45%;
+        height: 1px;
+        right: 0;
+        margin: 0 auto;
+        position: absolute;
       }
-      .nameInputs{
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        .firstName{
-          width: 100%;
-        }
-        .lastName{
-          width: 100%;
-        }
+      &::before{
+        content: "";
+        background: white;
+        width: 45%;
+        left: 0;
+        height: 1px;
+        margin: 0 auto;
+        position: absolute;
       }
     }
+    
   }
   a{
     width: 80%;
@@ -109,10 +94,12 @@ export const Container = styled.section`
     font-size: 16px;
   }
   .createNew{
-    margin-top: 56px;
-    height: 60px;
-    button{
-      border-radius: 0;
+    margin-top: 50px;
+    font-size: 12px;
+    a{
+      font-size: 12px;
+      margin-left: 2px;
+      color: #959;
     }
   }
 `;

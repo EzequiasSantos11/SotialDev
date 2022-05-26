@@ -1,4 +1,5 @@
 export type MessagesTypes = {
+  id: number,
   name: string,
   office?: string,
   date: string,

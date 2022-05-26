@@ -89,6 +89,7 @@ export const Container = styled.div`
       overflow-y:  scroll;
       padding-right: 5px;
       margin: 10px;
+      z-index: 1;
       &::-webkit-scrollbar{
         position: absolute;
         background-color: #f4f4f4;

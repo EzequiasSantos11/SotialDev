@@ -9,10 +9,10 @@ type SeachTypes ={
 
 export function SearchPeople({placehoderMessage}: SeachTypes) {
   const PeopleAdd = [
-    { ImagePeople: woman, name: "Woman user 1", office: "Developer Frontend" },
-    { ImagePeople: man, name: "Woman user 1", office: "Developer Frontend" },
-    { ImagePeople: woman, name: "Man user 2", office: "Developer Frontend" },
-    { ImagePeople: man, name: "Man user 2", office: "Developer Frontend" },
+    {id: 1, ImagePeople: woman, name: "Woman user 1", office: "Developer Frontend" },
+    {id: 2, ImagePeople: man, name: "Woman user 1", office: "Developer Frontend" },
+    {id: 3, ImagePeople: woman, name: "Man user 2", office: "Developer Frontend" },
+    {id: 4, ImagePeople: man, name: "Man user 2", office: "Developer Frontend" },
   ]
 
   return (
@@ -24,7 +24,7 @@ export function SearchPeople({placehoderMessage}: SeachTypes) {
         <input type="search" placeholder={placehoderMessage} name="" id="" />
       </div>
       {PeopleAdd.map(people => (
-        <div className="people">
+        <div key={people.id} className="people">
           <div className="infoPeople">
             <img src={people.ImagePeople} alt="alt" />
             <div className="textPeople">

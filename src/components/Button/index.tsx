@@ -1,12 +1,14 @@
+import { HTMLAttributes, MouseEventHandler } from "react";
 import {Container} from "./styles";
 
-type PropsButton={
-  children: React.ReactNode;
+type PropsButton ={
+  action?: MouseEventHandler<HTMLButtonElement>;
+  children: any;
 }
 
-function Button({children}: PropsButton){
+function Button({children, action}: PropsButton){
   return(
-    <Container>
+    <Container onClick={action}>
       {children}
     </Container>
   )

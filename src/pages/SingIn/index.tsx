@@ -2,10 +2,16 @@ import { Button } from "../../components/Button";
 import { Container } from "../../style/SingInStyles";
 import {FcGoogle} from "react-icons/fc";
 import {AiOutlineGithub} from "react-icons/ai";
-import BackImage from "../../assets/Background.png";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import BackImage from "../../assets/Background.png";
+import { UserContext } from "../../services/contextAPI";
 
 export default function SingIn(){
+  const { loginGithub, loginGoogle } = useContext(UserContext);
+  const createAccount = () => {
+    alert("Esta função ainda não foi implementada, por favor faça login com uma de suas redes sociais a baixo!");
+  }
   return(
     <Container>
       <div className="background">
@@ -14,22 +20,14 @@ export default function SingIn(){
       <div className="singIn">
         <h1>SotialDev</h1>
         <div className="sotialLogin">
-          <Link to={"/login"} className="link">
-            <a>
-              <Button >
-                <FcGoogle/>
-                use Google account
-              </Button>
-            </a>
-          </Link>
-          <Link className="link" to={"/login"}>
-            <a>
-              <Button>
-                <AiOutlineGithub/>
-                use GitHub account
-              </Button>
-            </a>
-          </Link>
+          <Button action={loginGoogle}>
+            <FcGoogle/>
+            use Google account
+          </Button>
+          <Button action={loginGithub}>
+            <AiOutlineGithub/>
+            use GitHub account
+          </Button>
         </div>
         <span>or</span>
         <form>
@@ -55,13 +53,9 @@ export default function SingIn(){
             <label>Password <span>(min. 8 char)</span></label>
             <input type="password" />
           </div>
-          <Link to={"/login"}>
-            <a href="">
-              <Button>
-                Create
-              </Button>
-            </a>
-          </Link>
+          <Button action={createAccount}>
+            Create
+          </Button>
           <p>By joining, you agree to the Terms and Privacy Policy.</p>
         </form>
       </div>

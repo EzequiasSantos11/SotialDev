@@ -16,7 +16,7 @@ export function MessagesComponent(){
         {NewMessage.map(people => (
           <>
             {people.isUser ? "":(
-              <div className="people" id={people.active ? "on" : "off"}>
+              <div className="people" key={people.id} id={people.active ? "on" : "off"}>
                 <div className="infoPeople">
                   <img src={people.ImagePeople} alt="alt" />
                   <div className="textPeople">
@@ -33,7 +33,7 @@ export function MessagesComponent(){
       <div className="messagesWrapper">
         <div className="message">
           {NewMessage.map(people => (
-            <div className={people.isUser ? "people user" : "people"} id={people.active ? "on" : "off"}>
+            <div key={people.id} className={people.isUser ? "people user" : "people"} id={people.active ? "on" : "off"}>
               <div className="infoPeople">
                 <img src={people.ImagePeople} alt="alt" />
                 <div className="textPeople">

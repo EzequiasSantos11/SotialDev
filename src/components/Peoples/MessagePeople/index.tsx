@@ -8,13 +8,13 @@ import Image from "../../../assets/messageImage.png";
 
 export function MessagePeople(){
   const PeopleAdd = [
-    { ImagePeople: woman, name: "Woman user 1", office: "Developer Frontend", messageText: "teste" },
-    { ImagePeople: man, name: "Woman user 1", office: "Developer Frontend", messageText: "This is my new project, I’m happy.", messageImage: Image}
+    {id: 1, ImagePeople: woman, name: "Woman user 1", office: "Developer Frontend", messageText: "teste" },
+    {id: 2, ImagePeople: man, name: "Woman user 1", office: "Developer Frontend", messageText: "This is my new project, I’m happy.", messageImage: Image}
   ]
   return(
     <Container>
       {PeopleAdd.map(people => (
-        <div className="messagePeople">
+        <div key={people.id} className="messagePeople">
           <div className="people">
             <div className="infoPeople">
               <img src={people.ImagePeople} alt="alt" />

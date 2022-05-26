@@ -1,23 +1,11 @@
 import styled from "styled-components";
 
-
-
-export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  .wrapper{
-    display: flex;
-  }
-`;
-
-export const Aside = styled.aside`
-  display: flex;
+export const Container = styled.div`
+ display: flex;
   flex-direction: column;
   height: 600px;
   width: 40%;
-  max-width: 330px;
+  max-width: 362px;
   border-radius: 10px;
   margin: 0 20px;
   background: var(--background-secondary);
@@ -52,6 +40,8 @@ export const Aside = styled.aside`
     img{
       height: 100px;
       width: 100px;
+      background: var(--background-secondary);
+      padding: 5px;
       border-radius: 50%;
     }
     h1{
@@ -75,22 +65,5 @@ export const Aside = styled.aside`
       width: 100%;
       font-size: 12px;
     }
-  }
-`;
-
-export const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  width: 69%;
-  height: 100%;
-  .body{
-    display: flex;
-    flex-direction: column;
-    height: 82vh;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    background: var(--background-secondary);
   }
 `;

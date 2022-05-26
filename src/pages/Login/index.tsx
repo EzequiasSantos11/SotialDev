@@ -1,63 +1,48 @@
 import { Button } from "../../components/Button";
 import { Container } from "../../style/LoginStyles";
-import {FcGoogle} from "react-icons/fc";
-import {AiOutlineGithub} from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineGithub } from "react-icons/ai";
 import BackImage from "../../assets/Background.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Moon from "../../assets/moon.png";
+//Importações firebase (separar em outro arquivo mais tarde).
 import { useContext } from "react";
 import { UserContext } from "../../services/contextAPI";
 
 //Logo irei implementar a autenticação com Github por aqui.
 
-export default function Login(){
-  return(
+export default function Login() {
+  const {loginGithub, loginGoogle} = useContext(UserContext);
+  return (
     <Container>
       <div className="background">
         <img src={BackImage} alt="" />
       </div>
       <div className="singIn">
-        <h1>SotialDev</h1>
-        <form>
-          <div className="input emailInput">
-            <label>Email</label>
-            <input type="email"/>
-          </div>
-          <div className="input passwordInput">
-            <div className="cabecalho">
-              <label>Password</label>
-              <span>Forgot your password?</span>
-            </div>
-            <input type="password" />
-          </div>
-        </form>
-        <div className="sotialLogin">
-          <Link to={"/login"}>
-            <a>
-              <Button >
-                <FcGoogle/>
-                use Google account
-              </Button>
-            </a>
-          </Link>
-          <Link className="link" to={"/home"}>
-            <a>
-              <Button>
-                <AiOutlineGithub/>
-                use GitHub account
-              </Button>
-            </a>
-          </Link>
+        <div className="logo">
+          <img src={Moon} alt="" />
+          <h1>Moon</h1>
         </div>
-        <a href="">
-          <Button>
-            Login
+          <strong>Entre em sua conta para conversar!</strong>
+        <div className="form">
+          <Button action={loginGithub}>
+            <AiOutlineGithub />
+            Login with a github
           </Button>
-        </a>
-        <a className="createNew" href="">
-          <Button>
-            Create your account
+          <Button action={loginGoogle}>
+            <FcGoogle />
+            use Google account
           </Button>
-        </a>
+        </div>
+        <span className="separator">or</span>
+        <span className="createNew">
+          You not have account?
+          <Link to={"/create-account"}>
+            <a>
+              Create your account.
+            </a>
+          </Link>
+        </span>
       </div>
     </Container>
   )

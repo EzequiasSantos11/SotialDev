@@ -1,33 +1,45 @@
 import { Container } from "../../style/UserConfigStyles";
 import Banner from "../../assets/banner-user.png";
-import UserPhoto from "../../assets/user-photo.png";
+import { HTMLInputTypeAttribute, useContext, useState } from "react";
+import { UserContext } from "../../services/contextAPI";
+
+type DataProps ={
+  fullName?: string,
+  company?: string,
+  position?: string
+}
 
 export default function UserConfig(){
+  const {user} = useContext(UserContext);
+  const [data, setData] = useState<DataProps>({
+    fullName: user?.name,
+    company: "Onde você trabalha?",
+    position: "Em qual área você brilha mais?"
+  });
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setData({[e.currentTarget.name]: [e.currentTarget.value]});
+  };
   return(
     <Container>
       <div className="wrapper">
           <img src={Banner} alt=""/>
         <div className="userInfos">
           <div className="photoprofile">
-            <img src={UserPhoto} alt="" />
+            <img src={user?.avatar} alt="" />
             <span>Click to change</span>
           </div>
           <form>
-            <div className="input fistName">
-              <label>Fist name</label>
-              <input type="text" value={"User"}/>
-            </div>
             <div className="input lastName">
-              <label>Last name</label>
-              <input type="text" value={"Testing"}/>
+              <label>Full name</label>
+              <input type="text" name="fullName" onChange={handleInput} value={data.fullName}/>
             </div>
             <div className="input Company">
               <label>Company</label>
-              <input type="text" />
+              <input type="text" name="company" onChange={handleInput} value={data.company} />
             </div>
             <div className="input Position">
               <label>Position</label>
-              <input type="text" value={"Developer"}/>
+              <input type="text" name="position" onChange={handleInput} value={data.position}/>
             </div>
           </form>
         </div>
