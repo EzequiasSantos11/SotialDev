@@ -12,7 +12,6 @@ type UserProviderTypes = {
   NewMessage: MessagesTypes[];
   active: boolean,
   user: UserProps | null,
-  loginGithub: ()=>Promise<void>,
   loginGoogle: ()=>Promise<void>,
   signOutAllAccounts: ()=>void,
 }
@@ -59,26 +58,26 @@ export function UserProvider({children}: any){
     })
   },[]);
   //Função de autenticação do usuário com o github.
-  async function loginGithub(){
-    if(user){
-      history("/home");
-    }else{
-      const result = await signInWithPopup(auth, githubProvider);
-      if(result.user){
-        const { displayName, photoURL, uid } = result.user;
-        if(!displayName || !photoURL){
-          throw new Error("Missing information from Github Account.");
-        }
-        localStorage.setItem("user", `[name: ${displayName}, avatar: ${photoURL}], id: ${uid}`)
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL
-        })
-        history("/home");
-      }
-    }
-  }
+  // async function loginGithub(){
+  //   if(user){
+  //     history("/home");
+  //   }else{
+  //     const result = await signInWithPopup(auth, githubProvider);
+  //     if(result.user){
+  //       const { displayName, photoURL, uid } = result.user;
+  //       if(!displayName || !photoURL){
+  //         throw new Error("Missing information from Github Account.");
+  //       }
+  //       localStorage.setItem("user", `[name: ${displayName}, avatar: ${photoURL}], id: ${uid}`)
+  //       setUser({
+  //         id: uid,
+  //         name: displayName,
+  //         avatar: photoURL
+  //       })
+  //       history("/home");
+  //     }
+  //   }
+  // }
   //Login com Google Account.
   async function loginGoogle(){
     if(user){
@@ -116,7 +115,7 @@ export function UserProvider({children}: any){
   }
 
   return(
-    <UserContext.Provider value={{user, NewMessage, active, loginGithub, loginGoogle, signOutAllAccounts}}>
+    <UserContext.Provider value={{user, NewMessage, active,  loginGoogle, signOutAllAccounts}}>
       {children}
     </UserContext.Provider>
   )

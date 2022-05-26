@@ -8,9 +8,9 @@ import BackImage from "../../assets/Background.png";
 import { UserContext } from "../../services/contextAPI";
 
 export default function SingIn(){
-  const { loginGithub, loginGoogle } = useContext(UserContext);
+  const { loginGoogle } = useContext(UserContext);
   const createAccount = () => {
-    alert("Esta função ainda não foi implementada, por favor faça login com uma de suas redes sociais a baixo!");
+    alert("Esta função ainda não foi implementada, por favor faça login com uma de suas contas do Google!");
   }
   return(
     <Container>
@@ -24,10 +24,10 @@ export default function SingIn(){
             <FcGoogle/>
             use Google account
           </Button>
-          <Button action={loginGithub}>
+          {/* <Button action={loginGithub}>
             <AiOutlineGithub/>
             use GitHub account
-          </Button>
+          </Button> */}
         </div>
         <span>or</span>
         <form>

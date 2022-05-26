@@ -12,7 +12,7 @@ import { UserContext } from "../../services/contextAPI";
 //Logo irei implementar a autenticação com Github por aqui.
 
 export default function Login() {
-  const {loginGithub, loginGoogle} = useContext(UserContext);
+  const { loginGoogle} = useContext(UserContext);
   return (
     <Container>
       <div className="background">
@@ -25,10 +25,10 @@ export default function Login() {
         </div>
           <strong>Entre em sua conta para conversar!</strong>
         <div className="form">
-          <Button action={loginGithub}>
+          {/* <Button action={loginGithub}>
             <AiOutlineGithub />
             Login with a github
-          </Button>
+          </Button> */}
           <Button action={loginGoogle}>
             <FcGoogle />
             use Google account
