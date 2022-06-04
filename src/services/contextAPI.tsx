@@ -11,7 +11,7 @@ import man from "../assets/man.png";
 type UserProviderTypes = {
   NewMessage: MessagesTypes[];
   active: boolean,
-  user: UserProps | null,
+  user: boolean,
   loginGoogle: ()=>void,
   signOutAllAccounts: ()=>void,
 }
@@ -25,7 +25,7 @@ type UserProps ={
 export const UserContext = createContext<UserProviderTypes>({} as UserProviderTypes);
 
 export function UserProvider({children}: any){
-  const [user, setUser] = useState<UserProps | null>(null);
+  const [user, setUser] = useState(true);
   const history = useNavigate();
 
   const NewMessage: MessagesTypes[] = [
