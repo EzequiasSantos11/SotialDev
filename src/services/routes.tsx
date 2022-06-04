@@ -28,25 +28,17 @@ export function Routers(){
       <Route path="*" element={<Notfound/>}/>
       <Route path="/" element={<Login/>}/>
       <Route path="/home" element={
-        <RequireAuth>
           <Home/>
-        </RequireAuth>
       }/>
       <Route path="/create-account" element={<SingIn/>}/>
       <Route path="/confirm-email" element={ 
-        <RequireAuth>
           <EmailConfirm/>
-        </RequireAuth>
       }/>
       <Route path="/configurations" element={ 
-        <RequireAuth>
           <UserConfig/>
-        </RequireAuth>
       }/>
       <Route path="/messages" element={ 
-        <RequireAuth>
           <Messages/>
-        </RequireAuth>
       }/>
     </Routes>
    
